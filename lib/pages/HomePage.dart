@@ -69,7 +69,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   int _currentIndex = 0;
-
   final List<Widget> _screens = [
     Center(child: Text('Services Screen')),
     Center(child: Text('Settings Screen')),
@@ -91,16 +90,12 @@ class _HomePageState extends State<HomePage> {
             CircleAvatar(
               backgroundImage: AssetImage('assets/nest.jpg'),
             ),
-            SizedBox(
-              width: 10.0,
-            ),
+            SizedBox(width: 10.0),
             Text(
               'Social Nest',
               style: TextStyle(letterSpacing: 1.3),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
           ],
         ),
         actions: [
@@ -108,7 +103,6 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
             icon: Icon(
               Icons.person,
-              // fill: 8,
               color: Colors.white,
             ),
           ),
@@ -123,61 +117,60 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       Container(
-                        child: Container(
-                          margin: EdgeInsets.only(top: 0.5),
-                          decoration: BoxDecoration(
+                        margin: EdgeInsets.only(top: 0.5),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(
+                              255, 246, 225, 249), // Light purple background
+                          border: Border.all(
                             color: Color.fromARGB(
-                                255, 246, 225, 249), // Light purple background
-                            border: Border.all(
-                              color: Color.fromARGB(255, 228, 13,
-                                  244), // Dark purple border color
-                              width: 2, // Border width
-                            ),
-                            // borderRadius:
-                            //     BorderRadius.circular(30),
+                                255, 228, 13, 244), // Dark purple border color
+                            width: 2, // Border width
                           ),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(Icons.edit_location_outlined),
-                                SizedBox(
-                                  width: 3.0,
-                                ),
-                                Text(
-                                  "Change Location",
-                                  style: TextStyle(),
-                                ),
-                                Icon(Icons.arrow_drop_down_sharp)
-                              ],
-                            ),
+                        ),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            children: [
+                              Icon(Icons.edit_location_outlined),
+                              SizedBox(width: 3.0),
+                              Text("Change Location"),
+                              Icon(Icons.arrow_drop_down_sharp)
+                            ],
                           ),
                         ),
                       ),
                       TextButton(
                         onPressed: fetchLocation,
-                        child: Text('$sublocality',
-                            style: TextStyle(
-                                color: const Color.fromARGB(255, 16, 118, 89))),
+                        child: Text(
+                          '$sublocality',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 16, 118, 89),
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  width: 15,
-                ),
+                SizedBox(width: 15),
                 Container(
                   margin: EdgeInsets.only(left: 10.0, top: 0.0),
                   width: 185.0,
-                  height: 35.0,
+                  height: 45.0, // Increased height for better touch target
                   child: TextField(
                     cursorWidth: 1,
                     controller: myController,
                     decoration: InputDecoration(
                       hintText: "Search here",
-                      prefixIcon: Icon(Icons.search),
+                      hintStyle: TextStyle(color: Colors.grey),
+                      prefixIcon: Icon(Icons.search, color: Colors.purple),
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 15.0),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50.0),
+                        borderSide:
+                            BorderSide(color: Colors.purple, width: 2.0),
                       ),
                     ),
                   ),
@@ -205,7 +198,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat), // Changed to a unique icon
-            label: 'chat',
+            label: 'Chat',
           ),
         ],
       ),
