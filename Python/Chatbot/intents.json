@@ -1,0 +1,116 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": ["hello", "hey", "hi", "good day", "greetings", "what's up?", "how is it going?"],
+      "responses": ["Hello! How can I assist you today?", "Hey there! How's it going?", "Hi! How can I help you?"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["cya", "see you later", "goodbye", "I am leaving", "have a good day", "bye", "see ya"],
+      "responses": ["Sad to see you go! Come back soon.", "Talk to you later! Stay awesome.", "Goodbye! Wishing you all the best."]
+    },
+    {
+      "tag": "age",
+      "patterns": ["how old", "how old are you", "what is your age", "age?"],
+      "responses": ["I am timeless! My age is infinity."]
+    },
+    {
+      "tag": "name",
+      "patterns": ["what is your name", "what should I call you", "whats your name?", "who are you?", "can you tell me your name"],
+      "responses": ["I'm Communitybot, here to help connect you with your local community!", "Call me Communitybot, your friendly guide."]
+    },
+    {
+      "tag": "help",
+      "patterns": ["help", "assist me", "I need help", "support"],
+      "responses": ["Of course! What do you need assistance with? I'm here to guide you."]
+    },
+    {
+      "tag": "community",
+      "patterns": ["what is this community about?", "how do I connect with others?", "tell me more about the community", "how do I join the local groups?"],
+      "responses": ["This community connects locals to foster collaboration and support. You can join groups based on your interests and activities.", "We bring people together! Join groups based on your hobbies, work, or area. Let's make this community vibrant."]
+    },
+    {
+      "tag": "events",
+      "patterns": ["what events are happening?", "tell me about the local events", "upcoming events?", "are there any meetups or events?"],
+      "responses": ["Check out the events tab for local happenings! There’s always something interesting around.", "We have regular events, from local meetups to community activities. Stay tuned for updates."]
+    },
+    {
+      "tag": "services",
+      "patterns": ["what services do you offer?", "can I get help with local services?", "do you provide recommendations?", "tell me about local services"],
+      "responses": [
+        "We offer a variety of services in your neighborhood! Here are some services you can find:\n- Grocery Stores\n- Healthcare Services\n- Fitness Centers\n- Public Libraries\n- Local Parks\n- Transport Services\n- Restaurants\n- Community Events\n- Emergency Services\n\nTo explore these services, go to the home page, select the menu, and choose 'Services.' You will find all the available options. Click on any service to get more details."
+      ]
+    },
+    {
+      "tag": "discover_neighborhood",
+      "patterns": ["tell me about the neighborhood", "what's in the neighborhood", "where can I go in the area?", "explore the neighborhood"],
+      "responses": [
+        "We have many exciting places in the neighborhood! You can visit parks, lakes, local cafes, and much more.\n\nIf you want to explore specific landmarks or hangout spots, let me know! I can guide you to the best spots."
+      ]
+    },
+    {
+      "tag": "hangout_spots",
+      "patterns": ["where can I hang out?", "best hangout spots?", "show me places to chill", "where do people go to hang out?"],
+      "responses": [
+        "To discover hangout spots near you, go to the home page, select the menu, and choose 'Hangouts.' You'll find nearby locations where you can relax and enjoy. Click on any location to get more details."
+      ]
+    },
+    {
+      "tag": "boredom",
+      "patterns": ["I'm bored", "what should I do?", "give me something to do", "I'm feeling bored"],
+      "responses": [
+        "How about taking a walk and exploring the neighborhood? You can visit a nearby service or hangout spot to refresh yourself!\n\nWould you like me to suggest a random service or hangout spot?"
+      ]
+    },
+    {
+      "tag": "random_suggestion",
+      "patterns": ["suggest something", "give me a suggestion", "what should I do?", "show me something interesting"],
+      "responses": [
+        "How about checking out a nearby park or trying out a local cafe? You can go to the home page, select the menu, and explore the 'Services' or 'Hangouts' sections for recommendations. Take a walk and enjoy the time!"
+      ]
+    },
+    {
+      "tag": "jokes",
+      "patterns": ["tell me a joke", "make me laugh", "joke time", "share a joke"],
+      "responses": [
+        "Why don't skeletons fight each other? They don’t have the guts!",
+        "I told my computer I needed a break, and now it’s sending me vacation ads.",
+        "Why did the coffee file a police report? It got mugged!",
+        "Why don’t eggs tell secrets? Because they might crack up!",
+        "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+        "Why did the math book look sad? It had too many problems.",
+        "Why don't some couples go to the gym? Because some relationships don’t work out."
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": ["where are you located?", "what is your address?", "your location"],
+      "responses": ["I exist in the digital realm. No physical address needed! I’m always here to help, anytime."]
+    },
+    {
+      "tag": "mindfulness",
+      "patterns": ["mindfulness", "practicing mindfulness", "mindful living", "mindfulness meditation"],
+      "responses": [
+        "Mindfulness is key to connecting with yourself and others. Let me know if you need tips on practicing mindfulness!",
+        "Stay present and calm. Mindfulness helps build stronger community connections."
+      ]
+    },
+    {
+      "tag": "mental_health",
+      "patterns": ["mental health", "coping with stress", "anxiety", "how to feel better", "self-care"],
+      "responses": [
+        "Taking care of your mental health is essential. Let me know if you'd like resources or tips for managing stress.",
+        "I’m here for you. Let’s talk if you need support with mental health and emotional well-being."
+      ]
+    },
+    {
+      "tag": "self_discovery",
+      "patterns": ["personal growth", "self-awareness", "personal development", "finding myself"],
+      "responses": [
+        "Self-discovery is a journey! Let’s explore together. How can I guide you today?",
+        "Embrace your growth. Let’s talk about ways to foster your personal development."
+      ]
+    }
+  ]
+}
