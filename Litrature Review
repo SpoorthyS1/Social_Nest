@@ -1,0 +1,16 @@
+A Dynamic Neighborhood Engagement and Services Application
+Abstract
+This study introduces a dynamic mobile application that bridges neighborhoods, connecting residents to local services, events, and points of interest, fostering community engagement. By leveraging location-based services (LBS) and user-centered design, the application facilitates access to essential amenities such as healthcare, groceries, and recreational activities like parks and cafes. This platform not only simplifies daily tasks but also enhances community interaction by acting as a hub for discovering neighborhood opportunities.
+
+The app employs geospatial mapping, personalized recommendations, and real-time service updates to create a holistic neighborhood ecosystem. Key features include context-aware notifications, seamless integration with community resources, and adaptive functionalities tailored to user preferences. Insights from research on ICT-enabled service platforms, service quality studies, and location-based applications underscore the application’s potential to enrich urban and suburban living while bridging the digital divide.
+
+This work synthesizes knowledge from existing studies, addressing challenges in community-based ICT design, such as service accuracy, user inclusivity, and feature scalability. By aligning technical solutions with social needs, the application aspires to redefine neighborhood dynamics, promoting social cohesion and improved quality of life.
+References
+1.	R. Parikh, "JustDial: Reducing the Digital Divide through an ICT-Enabled Application of Appropriate Technology and Fortune-Seeking Behavior at the Bottom of the Pyramid," Conf. on Appropriate Technology for Emerging Economies, 2021.
+2.	P. Shejwal, R. Mane, S. Thorat, D. More, and G. Suryawanshi, "HOME SERVICE APPLICATION [FIXIFY]," Int. J. Adv. Res. in Computer Sci. and Software Eng., vol. 12, no. 5, pp. 15–20, 2021.
+3.	H. Huang and G. Gartner, "Location-Based Services: Research Trends and Open Challenges," IEEE Trans. Mobile Comput., vol. 21, no. 5, pp. 678–689, 2020.
+4.	S. E. Pravena and G. Bharathi, "An Empirical Study on Urban Company Service Quality Influence on Customers, Hyderabad," Int. J. Business Studies, vol. 9, no. 2, pp. 67–75, 2021.
+5.	F. Biljecki, Y. S. Chow, and K. Lee, "Quality of Crowdsourced Geospatial Building Information: A Global Assessment of OpenStreetMap Attributes," J. Geospatial Inf. Sci., vol. 15, no. 3, pp. 45–58, 2020.
+6.	R. Pathak and P. Salunkhe, "Customer Expectation and Satisfaction Level of Urban Clap in Beauty Services: A Study with Reference to Pune," Balaji Inst. of Mgmt. Studies J., vol. 7, no. 4, pp. 12–19, 2020.
+7.	F. Tetard, E. Patokorpi, and V. Kadyte, "User-Centered Design of Mobile Services for Tourists," Conf. Mobile Design, 2019.
+8.	H. Alexander, J. Leo, and S. Kaijage, "Online and Offline Android-Based Mobile Application for Mapping Health Facilities Using Google Map API: A Case Study of Tanzania and Kenya Borders," Int. J. Mobile Comput. Appl., vol. 9, no. 3, pp. 34–42, 2021.
