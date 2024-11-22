@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:social_nest/component/my_button.dart';
 import 'package:social_nest/component/my_textfield.dart';
-import 'package:social_nest/pages/register_page.dart';
+import 'package:social_nest/pages/RegisterPage.dart';
+
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   final UserNameController = TextEditingController();
   final PasswordController = TextEditingController();
 
-  void signUserIn() {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8F3FF),
-      resizeToAvoidBottomInset: true, 
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -75,7 +74,9 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                MyButton(onTap: signUserIn),
+                MyButton(onTap: () {
+                  Navigator.pushNamed(context, '/Home');
+                }),
                 const SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -111,7 +112,7 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.grey[200],
                         ),
-                        child: Image.asset('apple2.png',
+                        child: Image.asset('assets/apple2.png',
                             height: 30, width: 50),
                       ),
                     ),
@@ -124,7 +125,7 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.grey[200],
                         ),
-                        child: Image.asset('google1.png',
+                        child: Image.asset('assets/google1.png',
                             height: 30, width: 50),
                       ),
                     ),
