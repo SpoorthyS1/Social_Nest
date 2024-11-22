@@ -11,14 +11,14 @@ class RegisterPage extends StatelessWidget {
   final phoneController = TextEditingController();
   final passwordController = TextEditingController();
 
-    final _formKey = GlobalKey<FormState>(); 
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8F3FF),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,  
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: SafeArea(
@@ -80,7 +80,7 @@ class RegisterPage extends StatelessWidget {
                   //   obscureText: true,
                   // ),
                   Form(
-                    key: _formKey, 
+                    key: _formKey,
                     child: Column(
                       children: [
                         Row(
@@ -96,11 +96,11 @@ class RegisterPage extends StatelessWidget {
                                   prefixIcon: Icon(Icons.person),
                                 ),
                                 validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'First Name is required';
-                                }
-                                return null;
-                              },
+                                  if (value == null || value.isEmpty) {
+                                    return 'First Name is required';
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
                             SizedBox(width: 5),
@@ -115,11 +115,11 @@ class RegisterPage extends StatelessWidget {
                                   prefixIcon: Icon(Icons.person),
                                 ),
                                 validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Last Name is required';
-                                }
-                                return null;
-                              },
+                                  if (value == null || value.isEmpty) {
+                                    return 'Last Name is required';
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
                           ],
@@ -136,11 +136,11 @@ class RegisterPage extends StatelessWidget {
                             prefixIcon: Icon(Icons.account_circle),
                           ),
                           validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Username is required';
-                          }
-                          return null;
-                        },
+                            if (value == null || value.isEmpty) {
+                              return 'Username is required';
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(height: 10),
 
@@ -154,17 +154,17 @@ class RegisterPage extends StatelessWidget {
                             prefixIcon: Icon(Icons.email),
                           ),
                           keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Email is required';
-                          }
-                          final emailRegex = RegExp(
-                              r'^[^@]+@[^@]+\.[^@]+'); // Basic email validation
-                          if (!emailRegex.hasMatch(value)) {
-                            return 'Enter a valid email address';
-                          }
-                          return null;
-                        },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email is required';
+                            }
+                            final emailRegex = RegExp(
+                                r'^[^@]+@[^@]+\.[^@]+'); // Basic email validation
+                            if (!emailRegex.hasMatch(value)) {
+                              return 'Enter a valid email address';
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(height: 10),
 
@@ -177,17 +177,18 @@ class RegisterPage extends StatelessWidget {
                             labelText: 'Phone',
                             prefixIcon: Icon(Icons.phone),
                           ),
-                           keyboardType: TextInputType.phone,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Phone number is required';
-                          }
-                          final phoneRegex = RegExp(r'^\d+$'); // Numeric check
-                          if (!phoneRegex.hasMatch(value)) {
-                            return 'Enter a valid phone number';
-                          }
-                          return null;
-                        },
+                          keyboardType: TextInputType.phone,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Phone number is required';
+                            }
+                            final phoneRegex =
+                                RegExp(r'^\d+$'); // Numeric check
+                            if (!phoneRegex.hasMatch(value)) {
+                              return 'Enter a valid phone number';
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(height: 10),
 
@@ -202,14 +203,14 @@ class RegisterPage extends StatelessWidget {
                             prefixIcon: Icon(Icons.lock),
                           ),
                           validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Password is required';
-                          }
-                          if (value.length < 6) {
-                            return 'Password must be at least 6 characters';
-                          }
-                          return null;
-                        },
+                            if (value == null || value.isEmpty) {
+                              return 'Password is required';
+                            }
+                            if (value.length < 6) {
+                              return 'Password must be at least 6 characters';
+                            }
+                            return null;
+                          },
                         ),
 
                         const SizedBox(height: 30),
@@ -218,21 +219,22 @@ class RegisterPage extends StatelessWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFFDAB9FF), // Peach button
+                              backgroundColor:
+                                  Color(0xFFDAB9FF), // Peach button
                               foregroundColor: Color(0xFF008080),
                             ),
                             onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomePage()),
-                        );
-                              // Process form submission
-                              print('Form Submitted');
-                            }
-                          },
-                          child: Text('Create account'),
+                              if (_formKey.currentState!.validate()) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()),
+                                );
+                                // Process form submission
+                                print('Form Submitted');
+                              }
+                            },
+                            child: Text('Create account'),
                           ),
                         ),
                       ],

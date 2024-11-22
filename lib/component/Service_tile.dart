@@ -18,19 +18,17 @@ class ServiceTile extends StatelessWidget {
       width: 1200,
       height: 150,
       decoration: BoxDecoration(
-        color:
-            const Color.fromARGB(255, 254, 172, 255), // Light purple background
+        color: const Color.fromARGB(255, 254, 172, 255),
         border: Border.all(
           color: Colors.teal,
           width: 2.0,
           style: BorderStyle.solid,
         ),
-        borderRadius: BorderRadius.circular(15.0), // Rounded corners
+        borderRadius: BorderRadius.circular(15.0),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Image with border
           Container(
             decoration: BoxDecoration(
               border: Border.all(

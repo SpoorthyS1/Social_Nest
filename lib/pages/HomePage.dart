@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:social_nest/component/locations.dart';
+import 'package:social_nest/pages/Notifications.dart';
+import 'package:social_nest/pages/Profile.dart';
+import 'package:social_nest/pages/Services.dart';
+import 'package:social_nest/pages/Settings.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -19,10 +23,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> fetchLocation() async {
     try {
-      // Fetch the device's location.
       Position position = await locationService.getGeoLocationPosition();
-
-      // Convert the location to a human-readable address and sublocality.
       String fetchedAddress =
           await locationService.getAddressFromLatLong(position);
       String fetchedSublocality =
@@ -34,7 +35,6 @@ class _HomePageState extends State<HomePage> {
         sublocality = fetchedSublocality;
       });
 
-      // Show the fetched address in a dialog
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
     } catch (e) {
       print('Error fetching location: $e');
 
-      // Show an error dialog
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -68,21 +67,14 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  int _currentIndex = 0;
-  final List<Widget> _screens = [
-    Center(child: Text('Services Screen')),
-    Center(child: Text('Settings Screen')),
-    Center(child: Text('Home Screen')),
-  ];
-
   TextEditingController myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 210, 48, 239),
+        backgroundColor: Colors.deepPurple, // Deep Purple for AppBar
         elevation: 8.0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -93,112 +85,150 @@ class _HomePageState extends State<HomePage> {
             SizedBox(width: 10.0),
             Text(
               'Social Nest',
-              style: TextStyle(letterSpacing: 1.3),
+              style: TextStyle(
+                letterSpacing: 1.3,
+                color: Colors.white,
+              ),
             ),
             SizedBox(height: 20),
           ],
         ),
         actions: [
-          IconButton.filled(
-            onPressed: () {},
-            icon: Icon(
-              Icons.person,
-              color: Colors.white,
+          Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.purple.shade200, // Light Purple Background
+            ),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserProfilePage()),
+                );
+              },
+              icon: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
             ),
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 0.5),
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(
-                              255, 246, 225, 249), // Light purple background
-                          border: Border.all(
-                            color: Color.fromARGB(
-                                255, 228, 13, 244), // Dark purple border color
-                            width: 2, // Border width
-                          ),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 0.5),
+                      decoration: BoxDecoration(
+                        color: Colors.purple.shade50, // Light Purple background
+                        border: Border.all(
+                          color: Colors.deepPurple, // Deep Purple border
+                          width: 2,
                         ),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                            children: [
-                              Icon(Icons.edit_location_outlined),
-                              SizedBox(width: 3.0),
-                              Text("Change Location"),
-                              Icon(Icons.arrow_drop_down_sharp)
-                            ],
-                          ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(Icons.edit_location_outlined,
+                                color: Colors.deepPurple),
+                            SizedBox(width: 3.0),
+                            Text(
+                              "Change Location",
+                              style: TextStyle(color: Colors.deepPurple),
+                            ),
+                            Icon(Icons.arrow_drop_down_sharp,
+                                color: Colors.deepPurple),
+                          ],
                         ),
                       ),
-                      TextButton(
-                        onPressed: fetchLocation,
-                        child: Text(
-                          '$sublocality',
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 16, 118, 89),
-                          ),
+                    ),
+                    TextButton(
+                      onPressed: fetchLocation,
+                      child: Text(
+                        '$sublocality',
+                        style: TextStyle(
+                          color: Colors.deepPurple.shade700,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                SizedBox(width: 15),
-                Container(
-                  margin: EdgeInsets.only(left: 10.0, top: 0.0),
-                  width: 185.0,
-                  height: 45.0, // Increased height for better touch target
-                  child: TextField(
-                    cursorWidth: 1,
-                    controller: myController,
-                    decoration: InputDecoration(
-                      hintText: "Search here",
-                      hintStyle: TextStyle(color: Colors.grey),
-                      prefixIcon: Icon(Icons.search, color: Colors.purple),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 15.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                        borderSide:
-                            BorderSide(color: Colors.purple, width: 2.0),
-                      ),
+              ),
+              SizedBox(width: 15),
+              Container(
+                margin: EdgeInsets.only(left: 10.0, top: 0.0),
+                width: 185.0,
+                height: 45.0,
+                child: TextField(
+                  cursorWidth: 1,
+                  controller: myController,
+                  decoration: InputDecoration(
+                    hintText: "Search here",
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Icon(Icons.search,
+                        color: const Color.fromARGB(255, 227, 109, 237)),
+                    filled: true,
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide:
+                          BorderSide(color: Colors.deepPurple, width: 2.0),
                     ),
                   ),
                 ),
+              ),
+            ],
+          ),
+          Spacer(),
+          Container(
+            color: const Color.fromARGB(
+                255, 173, 72, 240), // Footer Background Color
+            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.design_services),
+                  color: Colors.white, // Icons in White
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Services()),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.settings),
+                  color: Colors.white, // Icons in White
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Settings()),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.notifications_active),
+                  color: Colors.white, // Icons in White
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Notifications()),
+                    );
+                  },
+                ),
               ],
             ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.design_services),
-            label: 'Services',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat), // Changed to a unique icon
-            label: 'Chat',
           ),
         ],
       ),

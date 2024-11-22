@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_nest/component/Service_tile.dart';
+import 'package:social_nest/pages/Electricians.dart';
 import 'package:social_nest/pages/HomePage.dart';
 
 class Services extends StatefulWidget {
@@ -13,9 +14,9 @@ class _ServicesState extends State<Services> {
   // Services data: Includes service names, image paths, and destination pages
   final List<Map<String, dynamic>> services = [
     {
-      'title': 'Health & Hygiene',
-      'image': 'assets/nest.jpg',
-      'page': HomePage(),
+      'title': 'Electrician',
+      'image': 'assets/electrician.jpg',
+      'page': Electricians(),
     },
     {
       'title': 'Education & Learning',
@@ -67,6 +68,15 @@ class _ServicesState extends State<Services> {
                   color: Colors.white.withOpacity(0.5), // Adjust opacity
                 ),
                 // Centered text
+                SizedBox(
+                  height: 5.0,
+                ),
+                IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context); // Navigate back to the HomePage
+                  },
+                ),
                 Center(
                   child: Text(
                     'Connect with your community',

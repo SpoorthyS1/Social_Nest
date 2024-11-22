@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_nest/component/my_button.dart';
 import 'package:social_nest/component/my_textfield.dart';
+import 'package:social_nest/pages/HomePage.dart';
 import 'package:social_nest/pages/RegisterPage.dart';
 
 class LoginPage extends StatelessWidget {
@@ -74,9 +75,14 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                MyButton(onTap: () {
-                  Navigator.pushNamed(context, '/Home');
-                }),
+                MyButton(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  },
+                ),
                 const SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.all(20.0),

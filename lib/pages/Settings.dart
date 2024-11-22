@@ -3,14 +3,7 @@ import 'package:flutter/material.dart';
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Comprehensive Settings Page',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        scaffoldBackgroundColor: Colors.purple[50],
-      ),
-      home: SettingsPage(),
-    );
+    return SettingsPage(); // Directly return the SettingsPage
   }
 }
 
@@ -33,7 +26,8 @@ class SettingsPage extends StatelessWidget {
             ),
           ],
         ),
-        backgroundColor: Colors.purpleAccent,
+        backgroundColor: const Color.fromARGB(255, 218, 78, 243),
+        // Default back button will appear here
       ),
       body: ListView(
         padding: EdgeInsets.all(16.0),
