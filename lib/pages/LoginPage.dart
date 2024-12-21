@@ -1,32 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:social_nest/component/my_button.dart';
-import 'package:social_nest/component/my_textfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:social_nest/pages/HomePage.dart';
 import 'package:social_nest/pages/RegisterPage.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  final UserNameController = TextEditingController();
-  final PasswordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  Future<bool> signUserIn() async {
+    try {
+      final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      print(userCredential);
+      return true;
+    } catch (e) {
+      print("Error signing in: $e");
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF8F3FF),
+      backgroundColor: const Color(0xFFF8F3FF),
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               children: [
                 const SizedBox(height: 45),
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 50,
                 ),
                 const SizedBox(height: 35),
-                Text(
+                const Text(
                   'WELCOME TO YOUR COMMUNITY HUB',
                   style: TextStyle(
                     color: Color(0xFF6A0DAD),
@@ -38,8 +51,8 @@ class LoginPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    controller: UserNameController,
-                    decoration: InputDecoration(
+                    controller: emailController,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'UserName',
                       prefixIcon: Icon(Icons.person),
@@ -51,8 +64,8 @@ class LoginPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     obscureText: true,
-                    controller: PasswordController,
-                    decoration: InputDecoration(
+                    controller: passwordController,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Password',
                       prefixIcon: Icon(Icons.lock),
@@ -64,7 +77,7 @@ class LoginPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
+                    children: const [
                       Text(
                         'Forgot Password?',
                         style: TextStyle(
@@ -75,13 +88,35 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                MyButton(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                    );
+                ElevatedButton(
+                  onPressed: () async {
+                    bool isSignedIn = await signUserIn();
+                    if (isSignedIn) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Sign-in failed. Please try again.')),
+                      );
+                    }
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF6A0DAD),
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 15),
                 Padding(
@@ -94,8 +129,8 @@ class LoginPage extends StatelessWidget {
                           thickness: 0.5,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5.0),
                         child: Text('Or continue with'),
                       ),
                       Expanded(
@@ -118,11 +153,10 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.grey[200],
                         ),
-                        child: Image.asset('assets/apple2.png',
-                            height: 30, width: 50),
+                        child: Image.asset('assets/apple2.png', height: 30, width: 50),
                       ),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -131,8 +165,7 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6),
                           color: Colors.grey[200],
                         ),
-                        child: Image.asset('assets/google1.png',
-                            height: 30, width: 50),
+                        child: Image.asset('assets/google1.png', height: 30, width: 50),
                       ),
                     ),
                   ],
@@ -141,7 +174,7 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Not a member ?',
                       style: TextStyle(
                         fontSize: 15,
@@ -152,11 +185,10 @@ class LoginPage extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => RegisterPage()),
+                          MaterialPageRoute(builder: (context) => RegisterPage()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Register Now',
                         style: TextStyle(
                           color: Color(0xFF008080),
