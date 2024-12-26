@@ -4,7 +4,9 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
     id "com.google.gms.google-services" // Google services plugin
 }
-
+dependencies{
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
+}
 android {
     namespace = "com.social_nest.social_nest"
     compileSdk = flutter.compileSdkVersion
@@ -38,6 +40,4 @@ flutter {
     source = "../.."
 }
 
-dependencies {
-    implementation platform('com.google.firebase:firebase-bom:33.7.0') 
-}
+

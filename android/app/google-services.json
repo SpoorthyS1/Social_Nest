@@ -12,7 +12,20 @@
           "package_name": "com.social_nest.social_nest"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "187036775104-nvps1cc5rda97oilfpjt049lk3i76bk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.social_nest.social_nest",
+            "certificate_hash": "9498855e20b29f6a08201da520129b67537aa278"
+          }
+        },
+        {
+          "client_id": "187036775104-mu0fp6ki7b00u62cr890tg9gu16vp6on.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBfO8-raj419uzPDrk28ZcCoS4rNE2Ryt4"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187036775104-6q5ogpgcibtvss7grdt8hnbrpoosod0n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "187036775104-ivrh5put0iqcll3oqib4fbl1ckogkpcv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.socialnest.socialNest"
+              }
+            }
+          ]
         }
       }
     }
