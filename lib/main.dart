@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:social_nest/methods/Theme.dart';
 import 'package:social_nest/methods/firebase_auth_methods.dart';
 // import 'package:loginss/pages/register_page.dart';
 import 'firebase_options.dart';
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme, // Light Theme
+          darkTheme: AppTheme.darkTheme, // Dark Theme
+          themeMode: ThemeMode.system,
           home: StreamBuilder(
               stream: FirebaseAuth.instance.userChanges(),
               builder: (context, snapshot) {

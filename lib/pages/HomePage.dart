@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:social_nest/component/carousel_cards.dart';
 import 'package:social_nest/component/locations.dart';
 import 'package:social_nest/pages/Notifications.dart';
 import 'package:social_nest/pages/Profile.dart';
@@ -18,8 +19,10 @@ class _HomePageState extends State<HomePage> {
   final LocationService locationService = LocationService();
 
   String? address = null;
-  String? sublocality = 'Fetching location';
+  String? sublocality = 'Access location';
   Position? currentPosition = null;
+
+  int _selectedIndex = 0;
 
   Future<void> fetchLocation() async {
     try {
@@ -67,14 +70,44 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  TextEditingController myController = TextEditingController();
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Services()),
+        );
+        break;
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Notifications()),
+        );
+        break;
+      case 3:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Settings()),
+        );
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple, // Deep Purple for AppBar
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 8.0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -85,10 +118,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(width: 10.0),
             Text(
               'Social Nest',
-              style: TextStyle(
-                letterSpacing: 1.3,
-                color: Colors.white,
-              ),
+              style: Theme.of(context).appBarTheme.titleTextStyle,
             ),
             SizedBox(height: 20),
           ],
@@ -99,7 +129,8 @@ class _HomePageState extends State<HomePage> {
             width: 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: Colors.purple.shade200, // Light Purple Background
+              color:
+                  Theme.of(context).floatingActionButtonTheme.backgroundColor,
             ),
             child: IconButton(
               onPressed: () {
@@ -110,7 +141,8 @@ class _HomePageState extends State<HomePage> {
               },
               icon: Icon(
                 Icons.person,
-                color: Colors.white,
+                color:
+                    Theme.of(context).floatingActionButtonTheme.foregroundColor,
               ),
             ),
           ),
@@ -124,111 +156,136 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 0.5),
-                      decoration: BoxDecoration(
-                        color: Colors.purple.shade50, // Light Purple background
-                        border: Border.all(
-                          color: Colors.deepPurple, // Deep Purple border
-                          width: 2,
+                        margin: EdgeInsets.only(top: 2, left: 1.0),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(Icons.edit_location_outlined,
-                                color: Colors.deepPurple),
-                            SizedBox(width: 3.0),
-                            Text(
-                              "Change Location",
-                              style: TextStyle(color: Colors.deepPurple),
-                            ),
-                            Icon(Icons.arrow_drop_down_sharp,
-                                color: Colors.deepPurple),
-                          ],
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: fetchLocation,
-                      child: Text(
-                        '$sublocality',
-                        style: TextStyle(
-                          color: Colors.deepPurple.shade700,
-                        ),
-                      ),
-                    ),
+                        child: TextButton(
+                          onPressed: fetchLocation,
+                          style: TextButton.styleFrom(
+                            backgroundColor: Theme.of(context)
+                                .bottomNavigationBarTheme
+                                .backgroundColor,
+                            // Text color for light/dark theme
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.edit_location_outlined,
+                                      color: Theme.of(context).iconTheme.color),
+                                  SizedBox(width: 3.0),
+                                  Text(
+                                    "Fetch Location",
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .primaryColor, // Color for text based on theme
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_drop_down_sharp,
+                                    color: Theme.of(context)
+                                        .primaryColorLight, // Light primary color for dropdown icon
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                '$sublocality',
+                                style: TextStyle(
+                                  color: Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white70 // For dark theme
+                                      : Colors.black87, // For light theme
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
                   ],
                 ),
               ),
-              SizedBox(width: 15),
+              SizedBox(width: 3),
               Container(
-                margin: EdgeInsets.only(left: 10.0, top: 0.0),
-                width: 185.0,
+                margin: EdgeInsets.only(left: 5.0, top: 0.0),
+                width: 210.0,
                 height: 45.0,
                 child: TextField(
                   cursorWidth: 1,
-                  controller: myController,
+                  controller: TextEditingController(),
                   decoration: InputDecoration(
                     hintText: "Search here",
                     hintStyle: TextStyle(color: Colors.grey),
                     prefixIcon: Icon(Icons.search,
-                        color: const Color.fromARGB(255, 227, 109, 237)),
+                        color: Theme.of(context).primaryColor),
                     filled: true,
-                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    fillColor: Colors.white,
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
-                      borderSide:
-                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).primaryColor,
+                        width: 2.0,
+                      ),
                     ),
                   ),
                 ),
               ),
             ],
           ),
+          SizedBox(
+            height: 100,
+          ),
+          Expanded(
+            child: TallCarouselCards(),
+          ),
           Spacer(),
-          Container(
-            color: const Color.fromARGB(
-                255, 173, 72, 240), // Footer Background Color
-            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.design_services),
-                  color: Colors.white, // Icons in White
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Services()),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.settings),
-                  color: Colors.white, // Icons in White
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Settings()),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.notifications_active),
-                  color: Colors.white, // Icons in White
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Notifications()),
-                    );
-                  },
-                ),
-              ],
-            ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Handle messaging functionality
+        },
+        backgroundColor:
+            Theme.of(context).floatingActionButtonTheme.backgroundColor,
+        child: Icon(Icons.message,
+            color: Theme.of(context).floatingActionButtonTheme.foregroundColor),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor:
+            Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        selectedItemColor:
+            Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+        unselectedItemColor:
+            Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fastfood),
+            label: 'Donation',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.abc),
+            label: 'SearchAnyService',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Notifications',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
         ],
       ),
