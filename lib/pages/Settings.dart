@@ -225,7 +225,7 @@ class DetailsPage extends StatelessWidget {
               ),
               SizedBox(height: 8.0),
               Text(
-                'This app is designed to provide users with a seamless and intuitive experience for managing their settings. It includes features for account customization, language preferences, theme selection, and access to helpful resources.',
+                '"Social Nest" aims to bridge the gap by providing a unified platform for hyperlocal business discovery, community engagement and personalized local news updates. This app will empower individuals and businesses alike to connect, share and grow within their local ecosystem.. Designed with personalization, inclusivity, and safety in mind, it empowers small businesses, strengthens community ties, and provides users with a digital extension of their neighborhood.',
                 style: TextStyle(fontSize: 16.0),
               ),
             ],
