@@ -150,6 +150,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
+          SizedBox(height: 8.0),
           Row(
             children: [
               Container(
@@ -238,23 +239,84 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Hi, [Name]! Ready to make a explore your COMMUNITY?',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white // For dark theme
+                        : Colors.black87,
+                  ),
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'You’re currently in ${sublocality ?? 'a nearby city'}',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white // For dark theme
+                        : Colors.black87,
+                  ),
+                ),
+              ],
+            ),
+          ),
           SizedBox(
-            height: 100,
+            height: 50,
           ),
           Expanded(
             child: TallCarouselCards(),
           ),
-          Spacer(),
+          SizedBox(height: 20),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle messaging functionality
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  leading: Icon(Icons.admin_panel_settings),
+                  title: Text('Contact Community Admin'),
+                  onTap: () {
+                    // Logic for contacting admin
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.help),
+                  title: Text('Ask for Help'),
+                  onTap: () {
+                    // Logic for asking help
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.chat),
+                  title: Text('Start Chat with a Group'),
+                  onTap: () {
+                    // Logic for starting group chat
+                  },
+                ),
+              ],
+            ),
+          );
         },
         backgroundColor:
             Theme.of(context).floatingActionButtonTheme.backgroundColor,
-        child: Icon(Icons.message,
-            color: Theme.of(context).floatingActionButtonTheme.foregroundColor),
+        child: Icon(
+          Icons.more_vert,
+          color: Theme.of(context).floatingActionButtonTheme.foregroundColor,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

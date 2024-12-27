@@ -32,12 +32,12 @@ class AppTheme {
       displayLarge: TextStyle(
         fontSize: 32.0,
         fontWeight: FontWeight.bold,
-        color: Colors.white, // White Text
+        color: Colors.black, // White Text
       ),
       displayMedium: TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
-        color: Colors.white, // White Text
+        color: Colors.black, // White Text
       ),
       bodyLarge: TextStyle(
         fontSize: 16.0,
