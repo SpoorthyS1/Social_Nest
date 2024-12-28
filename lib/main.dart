@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:social_nest/methods/Theme.dart';
 import 'package:social_nest/methods/firebase_auth_methods.dart';
@@ -15,7 +16,14 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+
     runApp(const MyApp());
+    try {
+      await dotenv.load(fileName: ".env");
+      print("Loaded environment variables: ${dotenv.env}");
+    } catch (e) {
+      print("Error initializing dotenv: $e");
+    }
   } catch (e, stackTrace) {
     print('Error initializing Firebase: $e');
     print('Stacktrace: $stackTrace');

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:social_nest/pages/NewsPage.dart';
 
 class TallCarouselCards extends StatelessWidget {
   @override
@@ -54,7 +55,10 @@ class TallCarouselCards extends StatelessWidget {
             theme,
             [Colors.redAccent, Colors.pinkAccent],
             Icons.newspaper,
-            () => _onCardTap(context, "News & Updates"),
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NewsPage()),
+            ),
           ),
         ],
       ),
