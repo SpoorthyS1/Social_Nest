@@ -1,10 +1,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
+
     <application
         android:label="social_nest"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC4Zeh-wmUI0HQEBu45aKkpCxxLG383Rw0" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.MAP_ID"
+            android:value="95613a77c6734575" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
