@@ -18,12 +18,6 @@ void main() async {
     );
 
     runApp(const MyApp());
-    try {
-      await dotenv.load(fileName: ".env");
-      print("Loaded environment variables: ${dotenv.env}");
-    } catch (e) {
-      print("Error initializing dotenv: $e");
-    }
   } catch (e, stackTrace) {
     print('Error initializing Firebase: $e');
     print('Stacktrace: $stackTrace');

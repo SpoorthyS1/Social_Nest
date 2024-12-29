@@ -9,17 +9,22 @@ class NewsPage extends StatefulWidget {
 
 class _NewsPageState extends State<NewsPage> {
   final String _apiKey =
-      "b05f1104dad84bc3ba82a89a269a4992"; // Replace with your API key
+      "b05f1104dad84bc3ba82a89a269a4992"; // Hardcoded API Key
   final String _baseUrl = "https://newsapi.org/v2/everything";
-  final TextEditingController _searchController = TextEditingController();
-  List articles = [];
-  bool isLoading = false;
-  String errorMessage = "";
+  List<dynamic> _newsArticles = [];
+  bool _isLoading = true;
+  String _error = '';
 
-  Future<void> fetchNews(String query) async {
+  @override
+  void initState() {
+    super.initState();
+    _fetchNews("India"); // Default query for fetching news
+  }
+
+  Future<void> _fetchNews(String query) async {
     setState(() {
-      isLoading = true;
-      errorMessage = "";
+      _isLoading = true;
+      _error = '';
     });
 
     try {
@@ -29,28 +34,27 @@ class _NewsPageState extends State<NewsPage> {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+
         setState(() {
-          articles = data['articles'];
-          isLoading = false;
+          // Filter out articles with null or placeholder fields
+          _newsArticles = data['articles']
+              .where((article) =>
+                  article['title'] != null && article['title'] != "[Removed]")
+              .toList();
+          _isLoading = false;
         });
       } else {
         setState(() {
-          errorMessage = "Failed to fetch news: ${response.statusCode}";
-          isLoading = false;
+          _error = "Failed to fetch news: ${response.reasonPhrase}";
+          _isLoading = false;
         });
       }
     } catch (e) {
       setState(() {
-        errorMessage = e.toString();
-        isLoading = false;
+        _error = "Error occurred: $e";
+        _isLoading = false;
       });
     }
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
   }
 
   @override
@@ -61,87 +65,82 @@ class _NewsPageState extends State<NewsPage> {
       ),
       body: Column(
         children: [
-          // Search bar
+          // Search bar below AppBar
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: "Search news...",
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.clear),
-                  onPressed: () {
-                    _searchController.clear();
-                    setState(() {
-                      articles = [];
-                    });
-                  },
-                ),
-              ),
-              onSubmitted: (query) {
-                if (query.isNotEmpty) {
-                  fetchNews(query); // Fetch news when user submits
+              onSubmitted: (value) {
+                if (value.isNotEmpty) {
+                  _fetchNews(value);
                 }
               },
+              decoration: InputDecoration(
+                hintText: "Search for news...",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                prefixIcon: Icon(Icons.search),
+              ),
             ),
           ),
-          // Display results or loading indicator
           Expanded(
-            child: isLoading
+            child: _isLoading
                 ? Center(child: CircularProgressIndicator())
-                : errorMessage.isNotEmpty
-                    ? Center(child: Text(errorMessage))
-                    : articles.isEmpty
-                        ? Center(
-                            child: Text(
-                                "No articles found. Try searching for something."))
-                        : ListView.builder(
-                            itemCount: articles.length,
-                            itemBuilder: (context, index) {
-                              final article = articles[index];
-                              return Card(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 6),
-                                child: ListTile(
-                                  leading: article["urlToImage"] != null
-                                      ? Image.network(
-                                          article["urlToImage"],
-                                          width: 50,
-                                          fit: BoxFit.cover,
-                                        )
-                                      : Icon(Icons.image_not_supported),
-                                  title: Text(article["title"] ?? "No Title"),
-                                  subtitle: Text(article["description"] ??
-                                      "No Description"),
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: Text(
-                                            article["title"] ?? "No Title"),
-                                        content: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Text(article["description"] ??
-                                                "No Description"),
-                                            SizedBox(height: 10),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text("Close"),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
+                : _error.isNotEmpty
+                    ? Center(child: Text(_error))
+                    : ListView.builder(
+                        itemCount: _newsArticles.length,
+                        itemBuilder: (context, index) {
+                          final article = _newsArticles[index];
+
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                              vertical: 6.0,
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    blurRadius: 5,
+                                    spreadRadius: 2,
+                                    offset: Offset(2, 4),
+                                  ),
+                                ],
+                              ),
+                              child: ListTile(
+                                contentPadding: EdgeInsets.all(12.0),
+                                title: Text(
+                                  article['title'] ?? "No title",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0,
+                                  ),
                                 ),
-                              );
-                            },
-                          ),
+                                subtitle: Text(
+                                  article['description'] ?? "No description",
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                leading: article['urlToImage'] != null
+                                    ? Image.network(
+                                        article['urlToImage'],
+                                        width: 80,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Container(
+                                        width: 80,
+                                        color: Colors.grey[200],
+                                        child: Icon(Icons.image, size: 40),
+                                      ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
           ),
         ],
       ),
