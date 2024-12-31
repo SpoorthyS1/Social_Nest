@@ -7,61 +7,59 @@ class TallCarouselCards extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-      body: CarouselSlider(
-        options: CarouselOptions(
-          height: MediaQuery.of(context).size.height, // Full screen height
-          autoPlay: true,
-          enlargeCenterPage: true,
-          enableInfiniteScroll: false,
-          autoPlayInterval: Duration(seconds: 3),
-        ),
-        items: [
-          _customCard(
-            "Explore the Map",
-            "Interactive map view with Google Maps.",
-            theme,
-            [Colors.blueAccent, Colors.lightBlue],
-            Icons.map,
-            () => _onCardTap(context, "Explore the Map"),
-          ),
-          _customCard(
-            "Nearby Places",
-            "Discover cafes, gyms, parks, and more!",
-            theme,
-            [Colors.greenAccent, Colors.teal],
-            Icons.place,
-            () => _onCardTap(context, "Nearby Places"),
-          ),
-          _customCard(
-            "Game Notifications",
-            "Invite friends to play together!",
-            theme,
-            [Colors.orangeAccent, Colors.deepOrange],
-            Icons.notifications_active,
-            () => _onCardTap(context, "Game Notifications"),
-          ),
-          _customCard(
-            "Food Collection",
-            "Contribute to food drives in your area.",
-            theme,
-            [Colors.purpleAccent, Colors.deepPurple],
-            Icons.food_bank,
-            () => _onCardTap(context, "Food Collection"),
-          ),
-          _customCard(
-            "News & Updates",
-            "Stay updated with the latest community news.",
-            theme,
-            [Colors.redAccent, Colors.pinkAccent],
-            Icons.newspaper,
-            () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => NewsPage()),
-            ),
-          ),
-        ],
+    return CarouselSlider(
+      options: CarouselOptions(
+        height: MediaQuery.of(context).size.height, // Full screen height
+        autoPlay: true,
+        enlargeCenterPage: true,
+        enableInfiniteScroll: false,
+        autoPlayInterval: Duration(seconds: 3),
       ),
+      items: [
+        _customCard(
+          "Explore the Map",
+          "Interactive map view with Google Maps.",
+          theme,
+          [Colors.blueAccent, Colors.lightBlue],
+          Icons.map,
+          () => _onCardTap(context, "Explore the Map"),
+        ),
+        _customCard(
+          "Nearby Places",
+          "Discover cafes, gyms, parks, and more!",
+          theme,
+          [Colors.greenAccent, Colors.teal],
+          Icons.place,
+          () => _onCardTap(context, "Nearby Places"),
+        ),
+        _customCard(
+          "Game Notifications",
+          "Invite friends to play together!",
+          theme,
+          [Colors.orangeAccent, Colors.deepOrange],
+          Icons.notifications_active,
+          () => _onCardTap(context, "Game Notifications"),
+        ),
+        _customCard(
+          "Food Collection",
+          "Contribute to food drives in your area.",
+          theme,
+          [Colors.purpleAccent, Colors.deepPurple],
+          Icons.food_bank,
+          () => _onCardTap(context, "Food Collection"),
+        ),
+        _customCard(
+          "News & Updates",
+          "Stay updated with the latest community news.",
+          theme,
+          [Colors.redAccent, Colors.pinkAccent],
+          Icons.newspaper,
+          () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NewsPage()),
+          ),
+        ),
+      ],
     );
   }
 

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:social_nest/component/my_button.dart';
 import 'package:social_nest/methods/firebase_auth_methods.dart';
 import 'package:social_nest/pages/HomePage.dart';
+
 import 'package:social_nest/pages/RegisterPage.dart'; // Import the new service
 
 class LoginPage extends StatelessWidget {

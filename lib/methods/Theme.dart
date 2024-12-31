@@ -32,20 +32,20 @@ class AppTheme {
       displayLarge: TextStyle(
         fontSize: 32.0,
         fontWeight: FontWeight.bold,
-        color: Colors.black, // White Text
+        color: Colors.black, // Black Text
       ),
       displayMedium: TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
-        color: Colors.black, // White Text
+        color: Colors.black, // Black Text
       ),
       bodyLarge: TextStyle(
         fontSize: 16.0,
-        color: Colors.white70, // Slightly Greyed White
+        color: Colors.black, // Black Text
       ),
       bodyMedium: TextStyle(
         fontSize: 14.0,
-        color: Colors.white70, // Slightly Greyed White
+        color: Colors.black, // Black Text
       ),
       labelLarge: TextStyle(
         fontSize: 16.0,
@@ -113,20 +113,20 @@ class AppTheme {
       displayLarge: TextStyle(
         fontSize: 32.0,
         fontWeight: FontWeight.bold,
-        color: Colors.white, // White Text
+        color: Colors.black, // Black Text
       ),
       displayMedium: TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
-        color: Colors.white, // White Text
+        color: Colors.black, // Black Text
       ),
       bodyLarge: TextStyle(
         fontSize: 16.0,
-        color: Colors.white70, // Slightly Greyed White
+        color: Colors.black, // Black Text
       ),
       bodyMedium: TextStyle(
         fontSize: 14.0,
-        color: Colors.white70, // Slightly Greyed White
+        color: Colors.black, // Black Text
       ),
       labelLarge: TextStyle(
         fontSize: 16.0,

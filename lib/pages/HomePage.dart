@@ -334,16 +334,12 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.home_repair_service_sharp),
+            label: 'Services',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.fastfood),
             label: 'Donation',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.abc),
-            label: 'SearchAnyService',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
