@@ -301,6 +301,7 @@ import 'package:social_nest/pages/Notifications.dart';
 import 'package:social_nest/pages/Profile.dart';
 import 'package:social_nest/pages/Services.dart';
 import 'package:social_nest/pages/Settings.dart';
+import 'package:social_nest/pages/foodOptions.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -384,7 +385,7 @@ class _HomePageState extends State<HomePage> {
       case 2:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Notifications()),
+          MaterialPageRoute(builder: (context) => FoodOptionsPage(userId: '',)),
         );
         break;
       case 3:
@@ -628,16 +629,12 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.home_repair_service_sharp),
+            label: 'Services',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.fastfood),
             label: 'Donation',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.abc),
-            label: 'SearchAnyService',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

@@ -94,8 +94,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:social_nest/pages/foodOptions.dart';
+import 'package:social_nest/pages/gamespage.dart';
 import'package:social_nest/pages/mappage.dart';
+import 'package:social_nest/pages/nearbyplaces.dart';
+import 'package:social_nest/pages/newspage.dart';
 import 'package:social_nest/pages/weatherpage.dart';
+import 'package:social_nest/pages/busroute.dart';
 
 class TallCarouselCards extends StatelessWidget {
   @override
@@ -118,7 +122,7 @@ class TallCarouselCards extends StatelessWidget {
                 theme,
                 [Colors.blueAccent, Colors.lightBlue],
                 Icons.map,
-                () => _onCardTap(context,"hi"),
+                () => _onCardTap1(context,),
                 ),
 
            _customCard(
@@ -127,17 +131,17 @@ class TallCarouselCards extends StatelessWidget {
                  theme,
                 [Colors.deepPurple, Colors.purpleAccent],
                 Icons.cloud,
-                 () => _onCardTap(context,"hi"),
+                 () => _onWeatherCardTap(context),
                 ),
      
 
           _customCard(
             "Nearby Places",
-            "Discover cafes, gyms, parks, and more!",
+            "Discover cafes, parks, and more!",
             theme,
             [Colors.greenAccent, Colors.teal],
             Icons.place,
-            () => _onCardTap(context, "Nearby Places"),
+            () => _onnearbyCardTap(context ),
           ),
           _customCard(
             "Game Notifications",
@@ -156,13 +160,33 @@ class TallCarouselCards extends StatelessWidget {
             () => _onFoodCardTap(context,),
           ),
           _customCard(
-            "News & Updates",
-            "Stay updated with the latest community news.",
-            theme,
-            [Colors.redAccent, Colors.pinkAccent],
-            Icons.newspaper,
-            () => _onCardTap(context, "News & Updates"),
+           "Bus Route Finder",
+             "Find BMTC bus routes between two locations.",
+             Theme.of(context),
+            [Colors.lightBlueAccent, Colors.blue],
+              Icons.directions_bus,
+              () => _onBMTCTransitCardTap(context),
+            ),
+          _customCard(
+          "News & Updates",
+          "Stay updated with the latest community news.",
+          theme,
+          [Colors.redAccent, Colors.pinkAccent],
+          Icons.newspaper,
+          () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NewsPage()),
           ),
+        ),
+//           _customCard(
+//   "Play Games",
+//   "Access and play various online games.",
+//   theme,
+//   [Colors.green, Colors.lightGreen],
+//   Icons.videogame_asset,
+//   () => _onGamesCardTap(context, "Play Games"),
+// ),
+
         ],
       ),
     );
@@ -247,22 +271,43 @@ class TallCarouselCards extends StatelessWidget {
       ),
     );
   }
-//   void _onCardTap1(BuildContext context) {
-//   Navigator.push(
-//     context,
-//     MaterialPageRoute(builder: (context) => MapPage()),
-//   );
-// }
-// void _onWeatherCardTap(BuildContext context) {
-//   Navigator.push(
-//     context,
-//     MaterialPageRoute(builder: (context) => WeatherPage()),
-//   );
-// }
+  void _onCardTap1(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => MapPage()),
+  );
+}
+void _onWeatherCardTap(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => WeatherPage()),
+  );
+}
 void _onFoodCardTap(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => FoodOptionsPage(userId:FirebaseAuth.instance.currentUser!.uid,)),
   );
 }
+void _onBMTCTransitCardTap(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => BMTCTransitPage()),
+  );
+}
+void _onnearbyCardTap(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>NearbyPlacesPage() )
+    );
+}
+// void _onGamesCardTap(BuildContext context, String title) {
+//   Navigator.push(
+//     context,
+//     MaterialPageRoute(
+//       builder: (context) => GamesPage(),
+//     ),
+//   );
+// }
+
 }

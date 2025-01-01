@@ -239,216 +239,216 @@
 // //     }
 // //   }
 // // }
-// import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-// import 'dart:convert';
-// import 'package:geolocator/geolocator.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:geolocator/geolocator.dart';
 
-// class WeatherPage extends StatefulWidget {
-//   @override
-//   _WeatherPageState createState() => _WeatherPageState();
-// }
+class WeatherPage extends StatefulWidget {
+  @override
+  _WeatherPageState createState() => _WeatherPageState();
+}
 
-// class _WeatherPageState extends State<WeatherPage> {
-//   String apiKey = '5a91b27918904759a6d75924242712'; // Replace with your actual API key
-//   TextEditingController _searchController = TextEditingController();
-//   String location = 'Unknown'; // Displayed location
-//   var weatherData; // Weather data to display
-//   bool isLoading = true; // For showing loading state
+class _WeatherPageState extends State<WeatherPage> {
+  String apiKey = '5a91b27918904759a6d75924242712'; // Replace with your actual API key
+  TextEditingController _searchController = TextEditingController();
+  String location = 'Unknown'; // Displayed location
+  var weatherData; // Weather data to display
+  bool isLoading = true; // For showing loading state
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     _fetchCurrentLocationWeather();
-//   }
+  @override
+  void initState() {
+    super.initState();
+    _fetchCurrentLocationWeather();
+  }
 
-//   // Fetch weather for current location
-//   Future<void> _fetchCurrentLocationWeather() async {
-//     try {
-//       Position position = await Geolocator.getCurrentPosition(
-//           desiredAccuracy: LocationAccuracy.high);
-//       String latLng = '${position.latitude},${position.longitude}';
-//       await _fetchWeatherData(latLng);
-//     } catch (e) {
-//       setState(() {
-//         isLoading = false;
-//         location = 'Error: Unable to fetch location';
-//       });
-//     }
-//   }
+  // Fetch weather for current location
+  Future<void> _fetchCurrentLocationWeather() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      String latLng = '${position.latitude},${position.longitude}';
+      await _fetchWeatherData(latLng);
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+        location = 'Error: Unable to fetch location';
+      });
+    }
+  }
 
-//   // Fetch weather data from API
-//   Future<void> _fetchWeatherData(String query) async {
-//     setState(() {
-//       isLoading = true; // Show loading indicator
-//     });
-//     try {
-//       final response = await http.get(Uri.parse(
-//           'http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$query&days=3'));
-//       if (response.statusCode == 200) {
-//         setState(() {
-//           weatherData = json.decode(response.body);
-//           location = weatherData['location']['name'];
-//           isLoading = false;
-//         });
-//       } else {
-//         setState(() {
-//           isLoading = false;
-//         });
-//         _showError('Error: Unable to fetch weather data');
-//       }
-//     } catch (e) {
-//       setState(() {
-//         isLoading = false;
-//       });
-//       _showError('Error: Check your internet connection');
-//     }
-//   }
+  // Fetch weather data from API
+  Future<void> _fetchWeatherData(String query) async {
+    setState(() {
+      isLoading = true; // Show loading indicator
+    });
+    try {
+      final response = await http.get(Uri.parse(
+          'http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$query&days=3'));
+      if (response.statusCode == 200) {
+        setState(() {
+          weatherData = json.decode(response.body);
+          location = weatherData['location']['name'];
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        _showError('Error: Unable to fetch weather data');
+      }
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      _showError('Error: Check your internet connection');
+    }
+  }
 
-//   // Show an error message
-//   void _showError(String message) {
-//     ScaffoldMessenger.of(context).showSnackBar(
-//       SnackBar(
-//         content: Text(message),
-//         backgroundColor: Colors.red,
-//       ),
-//     );
-//   }
+  // Show an error message
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
 
-//   // Handle search input
-//   void _onSearch() {
-//     String query = _searchController.text.trim();
-//     if (query.isNotEmpty) {
-//       _fetchWeatherData(query);
-//     } else {
-//       _showError('Please enter a valid location');
-//     }
-//   }
+  // Handle search input
+  void _onSearch() {
+    String query = _searchController.text.trim();
+    if (query.isNotEmpty) {
+      _fetchWeatherData(query);
+    } else {
+      _showError('Please enter a valid location');
+    }
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Current Weather'),
-//       ),
-//       body: isLoading
-//           ? Center(child: CircularProgressIndicator())
-//           : SingleChildScrollView(
-//               padding: const EdgeInsets.all(16.0),
-//               child: Column(
-//                 children: [
-//                   // Search Bar
-//                   TextField(
-//                     controller: _searchController,
-//                     decoration: InputDecoration(
-//                       labelText: 'Search for a city',
-//                       hintText: 'Enter city name',
-//                       border: OutlineInputBorder(),
-//                       suffixIcon: IconButton(
-//                         icon: Icon(Icons.search),
-//                         onPressed: _onSearch,
-//                       ),
-//                     ),
-//                   ),
-//                   SizedBox(height: 20),
-//                   // Weather Info Display
-//                   if (weatherData != null) ...[
-//                     Text(
-//                       'Weather in $location',
-//                       style: TextStyle(
-//                         fontSize: 24,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                     SizedBox(height: 10),
-//                     // Current Weather
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: [
-//                         Image.network(
-//                           'https:${weatherData['current']['condition']['icon']}',
-//                           height: 50,
-//                           width: 50,
-//                         ),
-//                         SizedBox(width: 10),
-//                         Text(
-//                           '${weatherData['current']['temp_c']}°C',
-//                           style: TextStyle(fontSize: 40),
-//                         ),
-//                       ],
-//                     ),
-//                     Text(
-//                       weatherData['current']['condition']['text'],
-//                       style: TextStyle(fontSize: 18),
-//                     ),
-//                     SizedBox(height: 20),
-//                     // Current Weather Details
-//                     _infoTile('Feels Like', '${weatherData['current']['feelslike_c']}°C'),
-//                     _infoTile('Humidity', '${weatherData['current']['humidity']}%'),
-//                     _infoTile('Wind Speed', '${weatherData['current']['wind_kph']} km/h'),
-//                     _infoTile('Pressure', '${weatherData['current']['pressure_mb']} mb'),
-//                     _infoTile('UV Index', '${weatherData['current']['uv']}'),
-//                     _infoTile('Visibility', '${weatherData['current']['vis_km']} km'),
-//                     SizedBox(height: 20),
-//                     // Forecast for Next Few Days
-//                     Text(
-//                       '3-Day Forecast',
-//                       style: TextStyle(
-//                         fontSize: 24,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                     SizedBox(height: 10),
-//                     ...weatherData['forecast']['forecastday'].map<Widget>((day) {
-//                       return _forecastTile(day);
-//                     }).toList(),
-//                   ],
-//                 ],
-//               ),
-//             ),
-//     );
-//   }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Current Weather'),
+      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  // Search Bar
+                  TextField(
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      labelText: 'Search for a city',
+                      hintText: 'Enter city name',
+                      border: OutlineInputBorder(),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: _onSearch,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  // Weather Info Display
+                  if (weatherData != null) ...[
+                    Text(
+                      'Weather in $location',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    // Current Weather
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https:${weatherData['current']['condition']['icon']}',
+                          height: 50,
+                          width: 50,
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          '${weatherData['current']['temp_c']}°C',
+                          style: TextStyle(fontSize: 40),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      weatherData['current']['condition']['text'],
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(height: 20),
+                    // Current Weather Details
+                    _infoTile('Feels Like', '${weatherData['current']['feelslike_c']}°C'),
+                    _infoTile('Humidity', '${weatherData['current']['humidity']}%'),
+                    _infoTile('Wind Speed', '${weatherData['current']['wind_kph']} km/h'),
+                    _infoTile('Pressure', '${weatherData['current']['pressure_mb']} mb'),
+                    _infoTile('UV Index', '${weatherData['current']['uv']}'),
+                    _infoTile('Visibility', '${weatherData['current']['vis_km']} km'),
+                    SizedBox(height: 20),
+                    // Forecast for Next Few Days
+                    Text(
+                      '3-Day Forecast',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    ...weatherData['forecast']['forecastday'].map<Widget>((day) {
+                      return _forecastTile(day);
+                    }).toList(),
+                  ],
+                ],
+              ),
+            ),
+    );
+  }
 
-//   // Helper widget to display info as a list tile
-//   Widget _infoTile(String title, String value) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(vertical: 8.0),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           Text(
-//             title,
-//             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-//           ),
-//           Text(
-//             value,
-//             style: TextStyle(fontSize: 16),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
+  // Helper widget to display info as a list tile
+  Widget _infoTile(String title, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            value,
+            style: TextStyle(fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
 
-//   // Helper widget for forecast display
-//   Widget _forecastTile(dynamic forecast) {
-//     return Card(
-//       margin: EdgeInsets.symmetric(vertical: 8.0),
-//       child: ListTile(
-//         leading: Image.network(
-//           'https:${forecast['day']['condition']['icon']}',
-//           height: 50,
-//           width: 50,
-//         ),
-//         title: Text(
-//           '${forecast['date']} - ${forecast['day']['condition']['text']}',
-//           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-//         ),
-//         subtitle: Text(
-//           'Max: ${forecast['day']['maxtemp_c']}°C, Min: ${forecast['day']['mintemp_c']}°C\n'
-//           'Humidity: ${forecast['day']['avghumidity']}%, '
-//           'Wind: ${forecast['day']['maxwind_kph']} km/h',
-//         ),
-//       ),
-//     );
-//   }
-// }
+  // Helper widget for forecast display
+  Widget _forecastTile(dynamic forecast) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 8.0),
+      child: ListTile(
+        leading: Image.network(
+          'https:${forecast['day']['condition']['icon']}',
+          height: 50,
+          width: 50,
+        ),
+        title: Text(
+          '${forecast['date']} - ${forecast['day']['condition']['text']}',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          'Max: ${forecast['day']['maxtemp_c']}°C, Min: ${forecast['day']['mintemp_c']}°C\n'
+          'Humidity: ${forecast['day']['avghumidity']}%, '
+          'Wind: ${forecast['day']['maxwind_kph']} km/h',
+        ),
+      ),
+    );
+  }
+}

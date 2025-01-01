@@ -1,0 +1,62 @@
+[
+  {
+    "names": "Kaapi Katte",
+    "address": "3rd Stage Rajarajeshwari Nagar, Bangalore",
+    "rating": 4.3,
+    "open timings": "until 10:00 pm"
+  },
+  {
+    "names": "Nammane Coffee",
+    "address": "Old Outer Ring Road Kengeri, Bangalore",
+    "rating": 3.9,
+    "open timings": "until 10:00 pm"
+  },
+  {
+    "names": "Fab Cafe",
+    "address": "Main Road Rajarajeshwari Nagar, Bangalore",
+    "rating": 4.1,
+    "open timings": "11:00 AM"
+  },
+  {
+    "names": "Cafe Coffee Day",
+    "address": "Beml Layout Rajarajeshwari Nagar, Bangalore",
+    "rating": 4,
+    "open timings": "11:00 AM"
+  },
+  {
+    "names": "Cafe Coffee Day",
+    "address": "Mylasandra Mysore Road, Bangalore",
+    "rating": 4.1,
+    "open timings": "10:00 AM"
+  },
+  {
+    "names": "Cafe Coffee Day",
+    "address": "Rajarajeshwari Nagar, Bangalore",
+    "rating": 4,
+    "open timings": "9:00 AM"
+  },
+  {
+    "names": "Cafe Coffee Day",
+    "address": "Uttarhalli Main Road Mylasandra, Bangalore",
+    "rating": 4.2,
+    "open timings": "11:00 AM"
+  },
+  {
+    "names": "Mc Cafe",
+    "address": "Kenchanahalli, Bangalore",
+    "rating": 4,
+    "open timings": ""
+  },
+  {
+    "names": "Cafe Coffee Day",
+    "address": "Feet Road Rajarajeshwari Nagar, Bangalore",
+    "rating": 4,
+    "open timings": "8:30 AM"
+  },
+  {
+    "names": "Art Of Indulgence",
+    "address": "Kengeri Satellite Town R V Road, Bangalore",
+    "rating": 4.6,
+    "open timings": "8:30 AM"
+  }
+]

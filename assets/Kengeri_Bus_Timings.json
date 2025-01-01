@@ -1,0 +1,212 @@
+[
+     {
+      "Destination": "Yeshwanthpur",
+      "Bus Number": "401-M",
+      "Departure Time": "4:15 AM",
+      "Entry Time": "5:15 AM"
+     },
+     {
+      "Destination": "Yeshwanthpur",
+      "Bus Number": "401-M",
+      "Departure Time": "4:30 AM",
+      "Entry Time": "5:30 AM"
+     },
+     {
+      "Destination": "Yeshwanthpur",
+      "Bus Number": "401-M",
+      "Departure Time": "5:00 AM",
+      "Entry Time": "6:00 AM"
+     },
+     {
+      "Destination": "Yeshwanthpur",
+      "Bus Number": "401-M",
+      "Departure Time": "5:05 AM",
+      "Entry Time": "6:05 AM"
+     },
+     {
+      "Destination": "Yeshwanthpur",
+      "Bus Number": "401-M",
+      "Departure Time": "5:10 AM",
+      "Entry Time": "6:10 AM"
+     },
+     {
+      "Destination": "KR Puram",
+      "Bus Number": "502D",
+      "Departure Time": "4:30 AM",
+      "Entry Time": "5:30 AM"
+     },
+     {
+      "Destination": "KR Puram",
+      "Bus Number": "502D",
+      "Departure Time": "5:00 AM",
+      "Entry Time": "6:00 AM"
+     },
+     {
+      "Destination": "KR Puram",
+      "Bus Number": "502D",
+      "Departure Time": "5:30 AM",
+      "Entry Time": "6:30 AM"
+     },
+     {
+      "Destination": "KR Puram",
+      "Bus Number": "502D",
+      "Departure Time": "6:00 AM",
+      "Entry Time": "7:00 AM"
+     },
+     {
+      "Destination": "KR Puram",
+      "Bus Number": "502D",
+      "Departure Time": "6:30 AM",
+      "Entry Time": "7:30 AM"
+     },
+     {
+      "Destination": "Electronic City",
+      "Bus Number": "MF-378",
+      "Departure Time": "4:30 AM",
+      "Entry Time": "5:30 AM"
+     },
+     {
+      "Destination": "Electronic City",
+      "Bus Number": "MF-378",
+      "Departure Time": "4:40 AM",
+      "Entry Time": "5:40 AM"
+     },
+     {
+      "Destination": "Electronic City",
+      "Bus Number": "MF-378",
+      "Departure Time": "4:50 AM",
+      "Entry Time": "5:50 AM"
+     },
+     {
+      "Destination": "Electronic City",
+      "Bus Number": "MF-378",
+      "Departure Time": "5:00 AM",
+      "Entry Time": "6:00 AM"
+     },
+     {
+      "Destination": "Electronic City",
+      "Bus Number": "MF-378",
+      "Departure Time": "5:10 AM",
+      "Entry Time": "6:10 AM"
+     },
+     {
+      "Destination": "Banashankari",
+      "Bus Number": "MF-375D",
+      "Departure Time": "4:40 AM",
+      "Entry Time": "5:40 AM"
+     },
+     {
+      "Destination": "Banashankari",
+      "Bus Number": "MF-375D",
+      "Departure Time": "4:50 AM",
+      "Entry Time": "5:50 AM"
+     },
+     {
+      "Destination": "Banashankari",
+      "Bus Number": "MF-375D",
+      "Departure Time": "5:00 AM",
+      "Entry Time": "6:00 AM"
+     },
+     {
+      "Destination": "Banashankari",
+      "Bus Number": "MF-375D",
+      "Departure Time": "5:10 AM",
+      "Entry Time": "6:10 AM"
+     },
+     {
+      "Destination": "Banashankari",
+      "Bus Number": "MF-375D",
+      "Departure Time": "5:20 AM",
+      "Entry Time": "6:20 AM"
+     },
+     {
+      "Destination": "Hebbal",
+      "Bus Number": "501-C",
+      "Departure Time": "5:05 AM",
+      "Entry Time": "6:05 AM"
+     },
+     {
+      "Destination": "Hebbal",
+      "Bus Number": "501-C",
+      "Departure Time": "5:15 AM",
+      "Entry Time": "6:15 AM"
+     },
+     {
+      "Destination": "Hebbal",
+      "Bus Number": "501-C",
+      "Departure Time": "5:25 AM",
+      "Entry Time": "6:25 AM"
+     },
+     {
+      "Destination": "Hebbal",
+      "Bus Number": "501-C",
+      "Departure Time": "5:35 AM",
+      "Entry Time": "6:35 AM"
+     },
+     {
+      "Destination": "Hebbal",
+      "Bus Number": "501-C",
+      "Departure Time": "5:45 AM",
+      "Entry Time": "6:45 AM"
+     },
+     {
+      "Destination": "Nelamangala",
+      "Bus Number": "516",
+      "Departure Time": "5:00 AM",
+      "Entry Time": "6:00 AM"
+     },
+     {
+      "Destination": "Nelamangala",
+      "Bus Number": "516",
+      "Departure Time": "5:30 AM",
+      "Entry Time": "6:30 AM"
+     },
+     {
+      "Destination": "Nelamangala",
+      "Bus Number": "516",
+      "Departure Time": "6:00 AM",
+      "Entry Time": "7:00 AM"
+     },
+     {
+      "Destination": "Nelamangala",
+      "Bus Number": "516",
+      "Departure Time": "6:30 AM",
+      "Entry Time": "7:30 AM"
+     },
+     {
+      "Destination": "Nelamangala",
+      "Bus Number": "516",
+      "Departure Time": "7:00 AM",
+      "Entry Time": "8:00 AM"
+     },
+     {
+      "Destination": "Channapatna",
+      "Bus Number": "227-BA",
+      "Departure Time": "5:17 AM",
+      "Entry Time": "6:17 AM"
+     },
+     {
+      "Destination": "Channapatna",
+      "Bus Number": "227-BA",
+      "Departure Time": "5:47 AM",
+      "Entry Time": "6:47 AM"
+     },
+     {
+      "Destination": "Channapatna",
+      "Bus Number": "227-BA",
+      "Departure Time": "6:17 AM",
+      "Entry Time": "7:17 AM"
+     },
+     {
+      "Destination": "Channapatna",
+      "Bus Number": "227-BA",
+      "Departure Time": "6:47 AM",
+      "Entry Time": "7:47 AM"
+     },
+     {
+      "Destination": "Channapatna",
+      "Bus Number": "227-BA",
+      "Departure Time": "7:17 AM",
+      "Entry Time": "8:17 AM"
+     }
+    ]
