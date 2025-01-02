@@ -301,6 +301,7 @@ import 'package:social_nest/pages/Notifications.dart';
 import 'package:social_nest/pages/Profile.dart';
 import 'package:social_nest/pages/Services.dart';
 import 'package:social_nest/pages/Settings.dart';
+import 'package:social_nest/pages/chat/community_page.dart';
 import 'package:social_nest/pages/foodOptions.dart';
 
 class HomePage extends StatefulWidget {
@@ -385,7 +386,10 @@ class _HomePageState extends State<HomePage> {
       case 2:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => FoodOptionsPage(userId: '',)),
+          MaterialPageRoute(
+              builder: (context) => FoodOptionsPage(
+                    userId: '',
+                  )),
         );
         break;
       case 3:
@@ -597,9 +601,12 @@ class _HomePageState extends State<HomePage> {
                 ),
                 ListTile(
                   leading: Icon(Icons.chat),
-                  title: Text('Start Chat with a Group'),
+                  title: Text('Start Chat '),
                   onTap: () {
-                    // Logic for starting group chat
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CommunityPage()),
+                    );
                   },
                 ),
               ],

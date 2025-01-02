@@ -29,25 +29,24 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^5.0.0
+  cloud_firestore: ^5.1.0
   cupertino_icons: ^1.0.8
+  encrypt: ^5.0.3
   firebase_auth: ^5.3.4
   firebase_core: ^3.8.1
-  cloud_firestore: ^5.1.0
-  firebase_storage: ^12.3.7 
-  image_picker: ^1.1.2
   firebase_core_platform_interface: ^5.4.0
+  firebase_storage: ^12.3.7
   flutter:
     sdk: flutter
   geocoding: ^3.0.0
   geolocator: ^13.0.2
   google_maps_flutter: ^2.10.0
-  google_sign_in: ^6.2.2
-  provider: ^6.1.2
-  http: ^0.13.6
   google_maps_webservice: ^0.0.1
+  google_sign_in: ^6.2.2
+  http: ^0.13.6
+  image_picker: ^1.1.2
+  provider: ^6.1.2
   uuid: ^4.5.1
-  #webview_flutter: ^3.0.0
-
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -106,8 +105,6 @@ flutter:
     - assets/theatre.png
     - assets/cafe.png
     - assets/temple.png
-
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
@@ -128,6 +125,5 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

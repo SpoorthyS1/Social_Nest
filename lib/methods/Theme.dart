@@ -275,23 +275,19 @@ class AppTheme {
     ),
     textTheme: const TextTheme(
       displayLarge: TextStyle(
-        fontSize: 32.0,
-        fontWeight: FontWeight.bold,
-        color: Colors.black, // Black Text
-      ),
+          fontSize: 32.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white // Black Text
+          ),
       displayMedium: TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
-        color: Colors.black, // Black Text
+        color: Colors.white, // Black Text
       ),
-      bodyLarge: TextStyle(
-        fontSize: 16.0,
-        color: Colors.black, // Black Text
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 14.0,
-        color: Colors.black, // Black Text
-      ),
+      bodyLarge: TextStyle(fontSize: 16.0, color: Colors.white // Black Text
+          ),
+      bodyMedium: TextStyle(fontSize: 14.0, color: Colors.white // Black Text
+          ),
       labelLarge: TextStyle(
         fontSize: 16.0,
         fontWeight: FontWeight.bold,
