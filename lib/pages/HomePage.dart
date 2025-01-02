@@ -412,7 +412,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage('assets/nest.jpg'),
+              backgroundImage: AssetImage('assets/highresLogo.png'),
             ),
             SizedBox(width: 10.0),
             Text(
