@@ -82,6 +82,31 @@ flutter:
     - assets/electrician.jpg
     - assets/nest.jpg
     - assets/Kengeri_Bus_Timings.json
+    - assets/medicals.json
+    - assets/mechanic.json
+    - assets/foodstalls.json
+    - assets/electricals.json
+    - assets/carpenters.json
+    - assets/tutions.json
+    - assets/tiffin.png
+    - assets/busterminal.png
+    - assets/ias.png
+    - assets/medical.png
+    - assets/police.png
+    - assets/post.png
+    - assets/tuition.png
+    - assets/mechanic.png
+    - assets/carpenters.png
+    - assets/schools.png
+    - assets/schools.png
+    - assets/physioterpist.png
+    - assets/ngo.png
+    - assets/doctors.png
+    - assets/parks.png
+    - assets/theatre.png
+    - assets/cafe.png
+    - assets/temple.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

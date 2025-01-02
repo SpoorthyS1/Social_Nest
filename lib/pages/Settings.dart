@@ -287,7 +287,7 @@ class _SettingsPageState extends State<SettingsPage> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Services()),
+          MaterialPageRoute(builder: (context) => ServicesTab()),
         );
         break;
       case 2:
