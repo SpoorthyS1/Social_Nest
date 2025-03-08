@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:social_nest/methods/firebase_auth_methods.dart';
 
 void main() {
   runApp(MyApp());
@@ -192,6 +194,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   OutlinedButton(
                     onPressed: () {
                       print("Log Out");
+                      context.read<FirebaseAuthMethods>().signOut(context);
                     },
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(
