@@ -41,7 +41,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBAnkSM-H_yDuqro_Nv_8D2Jw21MNURYNM',
+    apiKey: 'AIzaSyBAnkSM-',
     appId: '1:187036775104:web:92d274b8913adb2b477325',
     messagingSenderId: '187036775104',
     projectId: 'socialnest-a6723',
@@ -50,7 +50,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBfO8-raj419uzPDrk28ZcCoS4rNE2Ryt4',
+    apiKey: 'AIzaSyBfO8',
     appId: '1:187036775104:android:eea631d374dab3d8477325',
     messagingSenderId: '187036775104',
     projectId: 'socialnest-a6723',
@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD9y_H7xi5GtaVc24WIkw8ITLtAHDfUgYc',
+    apiKey: 'AIzaSyD9y_H\',
     appId: '1:187036775104:ios:d6f4373b081b98fa477325',
     messagingSenderId: '187036775104',
     projectId: 'socialnest-a6723',
@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD9y_H7xi5GtaVc24WIkw8ITLtAHDfUgYc',
+    apiKey: 'AIzaSyD9y_',
     appId: '1:187036775104:ios:d6f4373b081b98fa477325',
     messagingSenderId: '187036775104',
     projectId: 'socialnest-a6723',
@@ -76,7 +76,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBAnkSM-H_yDuqro_Nv_8D2Jw21MNURYNM',
+    apiKey: 'AIzaSyBAnkSM-H_yDuqro_Nv_',
     appId: '1:187036775104:web:8a1a5f95ae6919b1477325',
     messagingSenderId: '187036775104',
     projectId: 'socialnest-a6723',
