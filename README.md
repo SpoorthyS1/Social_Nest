@@ -450,23 +450,7 @@ flutter format lib/
 3. View your current neighborhood in the home screen header
 4. Tap location to refresh or change manually
 
----
-
-## 📸 Screenshots
-
-> **Note**: Add your app screenshots here to showcase the UI and features
-
-```
-| Home Screen | Services | Profile |
-|------------|----------|---------|
-| [Screenshot 1] | [Screenshot 2] | [Screenshot 3] |
-
-| Login | Electrician Services | Notifications |
-|-------|---------------------|---------------|
-| [Screenshot 4] | [Screenshot 5] | [Screenshot 6] |
-```
-
----
+--
 
 ## 🤝 Contributing
 
